@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab2Solution.MainPage">
+
+    <ScrollView>
+        <Grid Padding="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="7*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <!--Title-->
+            <Label Text="Clue Compendium" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center"  FontSize="36"/>
+             
+            <!--
+            Add Entry
+            Delete Entry
+            Edit Entry
+            -->
+            <VerticalStackLayout Grid.Row="1" Grid.Column="0" WidthRequest="150">
+                <Button Text="Add Entry" Clicked="AddEntry" Margin="20"/>
+                <Button Text="Delete Entry" Clicked="DeleteEntry" Margin="20"/>
+                <Button Text="Edit Entry" Clicked="EditEntry" Margin="25"/>
+            </VerticalStackLayout>
+            <!--  
+             List of Entries
+            -->
+            <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+            <ListView x:Name="EntriesLV" ItemSelected="EntriesLV_ItemSelected" VerticalScrollBarVisibility="Always">
+                <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid RowSpacing="150" ColumnSpacing="10" Padding="10" >
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="2" Grid.Column="0" Text="{Binding Answer}"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Clue}" FontAttributes="Bold" />
+                                    <Label Grid.Row="2" Grid.Column="2" Text="{Binding Date}" FontAttributes="Bold" />
+                                    <Label Grid.Row="2" Grid.Column="3" Text="{Binding Difficulty}" FontAttributes="Bold" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+            
+            <VerticalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+
+                <HorizontalStackLayout Grid.Row="2">
+                    <Label Grid.Row="0" Grid.Column="0" Text="Clue: " VerticalTextAlignment="Center"/>
+                    <Entry Grid.Row="0" Grid.Column="0" Text="Ring Highlight?" Placeholder="Clue goes here" x:Name="clueENT"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout >
+                    <Label  Text="Answer: " VerticalTextAlignment="Center"/>
+                    <Entry  Text="JEWEL" Placeholder="answer goes here" x:Name="answerENT"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Difficulty: " VerticalTextAlignment="Center"/>
+                    <Entry Text="2" Placeholder="Difficulty goes here" x:Name="difficultyENT"/>
+                    <Label Text="Date:" Grid.Row="3" Grid.Column="0" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                    <Entry Text="10/01/2022" Placeholder="Date goes here" x:Name="dateENT"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
+
