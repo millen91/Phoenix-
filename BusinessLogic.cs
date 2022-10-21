@@ -49,6 +49,7 @@ namespace Lab2Solution
 
         private InvalidFieldError CheckEntryFields(string clue, string answer, int difficulty, string date)
         {
+            DateTime test;
             if (clue.Length < 1 || clue.Length > MAX_CLUE_LENGTH)
             {
                 return InvalidFieldError.InvalidClueLength;
@@ -60,6 +61,10 @@ namespace Lab2Solution
             if (difficulty < 0 || difficulty > MAX_DIFFICULTY)
             {
                 return InvalidFieldError.InvalidDifficulty;
+            }
+            if (!DateTime.TryParse(date, out test ))
+            {
+                return InvalidFieldError.InvalidDate;
             }
 
             return InvalidFieldError.NoError;
